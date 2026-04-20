@@ -9,132 +9,126 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="/css3/index.css">
-  <link rel="icon" type="image/png" href="img/favicon.ico">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo-area"><div class="logo-mark"></div></div>
+    <div class="logo-mark" role="img" aria-label="Élen"></div>
     <div class="nav-links">
       <a href="#home" data-i18n="nav.home">Início</a>
-      <a href="#how" data-i18n="nav.how">Como</a>
+      <a href="#how" data-i18n="nav.how">Como funciona</a>
       <a href="#transparency" data-i18n="nav.transparency">Transparência</a>
       <a href="login.html" data-i18n="nav.validation">Validação</a>
     </div>
-    <button class="theme-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+    <button class="theme-btn" id="themeToggle" aria-label="Alternar tema">
+      <i class="fas fa-moon"></i>
+    </button>
   </nav>
 
   <main class="container">
     <section class="fade-section hero" id="home">
-      <div class="section-tag" data-i18n="hero.tag">Camada de autenticidade IA</div>
-      <h1 data-i18n="hero.title">Élen distingue fato de ficção</h1>
-      <div class="lead" data-i18n="hero.lead">Para histórias, imagens e vídeos — detecte geração por IA com fontes verificadas.</div>
-      <p style="font-size: 1.2rem; max-width: 780px; color: var(--text-secondary);" data-i18n="hero.desc">
-        Élen é um assistente de verificação que usa referências globais confiáveis para determinar se o conteúdo é humano ou sintético.
-      </p>
+      <div class="overline" data-i18n="hero.tag">Camada de autenticidade</div>
+      <h1 data-i18n="hero.title">Élen revela o que é real</h1>
+      <div class="lead" data-i18n="hero.lead">
+        Detecte se uma história, imagem ou vídeo foi gerado por inteligência artificial — com fontes verificadas.
+      </div>
       <div class="hero-stats">
-        <span class="stat-badge"><i class="fas fa-check-circle"></i> <span data-i18n="hero.stat1">140+ fontes de checagem</span></span>
-        <span class="stat-badge"><i class="fas fa-bolt"></i> <span data-i18n="hero.stat2">Análise em tempo real</span></span>
-        <span class="stat-badge"><i class="fas fa-chart-simple"></i> <span data-i18n="hero.stat3">Pontuação transparente</span></span>
-        <span class="stat-badge"><i class="fas fa-server"></i> <span id="serverCountDisplay">...</span> <span data-i18n="hero.servers">servidores</span></span>
-        <span class="stat-badge"><i class="fas fa-users"></i> <span id="userCountDisplay">...</span> <span data-i18n="hero.users">usuários</span></span>
+        <div class="stat-item">
+          <span class="stat-number" id="serverCountDisplay">—</span>
+          <span class="stat-label" data-i18n="hero.servers">servidores ativos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="userCountDisplay">—</span>
+          <span class="stat-label" data-i18n="hero.users">usuários</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">68%</span>
+          <span class="stat-label" data-i18n="hero.accuracy">precisão</span>
+        </div>
       </div>
     </section>
 
     <div class="card-grid fade-section">
-      <div class="feature-card"><div class="card-icon"><i class="fas fa-file-lines"></i></div><h3 data-i18n="card1.title">Texto e narrativas</h3><p data-i18n="card1.desc">Analisa creepypastas, artigos e postagens. Compara estilo, estrutura e consistência factual com arquivos e jornalismo.</p></div>
-      <div class="feature-card"><div class="card-icon"><i class="fas fa-image"></i></div><h3 data-i18n="card2.title">Inspeção de imagens</h3><p data-i18n="card2.desc">Detecta artefatos generativos, verifica EXIF e realiza busca reversa para verificar o contexto original.</p></div>
-      <div class="feature-card"><div class="card-icon"><i class="fas fa-video"></i></div><h3 data-i18n="card3.title">Análise de vídeo</h3><p data-i18n="card3.desc">Identifica deepfakes, anomalias temporais e incompatibilidades audiovisuais usando algoritmos forenses.</p></div>
+      <div class="card">
+        <i class="fas fa-align-left"></i>
+        <h3 data-i18n="card1.title">Texto</h3>
+        <p data-i18n="card1.desc">Analisa narrativas, artigos e publicações comparando com arquivos jornalísticos.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-image"></i>
+        <h3 data-i18n="card2.title">Imagem</h3>
+        <p data-i18n="card2.desc">Detecta marcas de IA, verifica metadados e busca o contexto original.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-video"></i>
+        <h3 data-i18n="card3.title">Vídeo</h3>
+        <p data-i18n="card3.desc">Identifica deepfakes e inconsistências com algoritmos forenses.</p>
+      </div>
     </div>
 
-    <section class="fade-section" id="how">
-      <div class="explainer-grid">
-        <div class="glass-panel">
-          <div class="section-tag" data-i18n="method.tag">metodologia</div>
-          <h2 data-i18n="method.title">Como a verificação funciona</h2>
-          <ul class="step-list">
-            <li><span class="step-marker">1</span><span><strong data-i18n="method.step1title">Ingestão:</strong> <span data-i18n="method.step1">Envie ou cole um link. O sistema extrai texto, características visuais ou quadros-chave.</span></span></li>
-            <li><span class="step-marker">2</span><span><strong data-i18n="method.step2title">Referência cruzada:</strong> <span data-i18n="method.step2">Consulta bancos de dados confiáveis, APIs de checagem e corpora abertos.</span></span></li>
-            <li><span class="step-marker">3</span><span><strong data-i18n="method.step3title">Impressão digital de IA:</strong> <span data-i18n="method.step3">Varre sinais reveladores de geradores como GANs, modelos de difusão ou LLMs.</span></span></li>
-            <li><span class="step-marker">4</span><span><strong data-i18n="method.step4title">Veredito:</strong> <span data-i18n="method.step4">Fornece uma classificação clara: autêntico ou sintético com links de evidências.</span></span></li>
-          </ul>
-        </div>
-        <div class="glass-panel">
-          <div class="section-tag" data-i18n="trust.tag">confiabilidade</div>
-          <h2 data-i18n="trust.title">Por que confiar no Élen?</h2>
-          <p data-i18n="trust.desc">Cada resultado é respaldado por fontes públicas verificáveis — sem IA caixa-preta. Você pode revisar as referências.</p>
-          <div style="margin-top: 2rem;">
-            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <div><span style="font-weight: 700; font-size: 1.8rem;">97%</span><br><span data-i18n="trust.precision">precisão (testada)</span></div>
-              <div><span style="font-weight: 700; font-size: 1.8rem;">0</span><br><span data-i18n="trust.retention">retenção de dados</span></div>
-            </div>
-            <hr style="margin: 1.5rem 0; border-color: var(--border-light);">
-            <p data-i18n="trust.ephemeral">Élen não armazena seus envios. A análise é efêmera e segura.</p>
-          </div>
-        </div>
+    <section class="fade-section split-panel" id="how">
+      <div class="panel">
+        <h2 data-i18n="method.title">Verificação passo a passo</h2>
+        <ul class="step-list">
+          <li><span class="step-number">1</span> <span><strong data-i18n="method.step1title">Envio:</strong> <span data-i18n="method.step1">Cole um link ou faça upload do arquivo.</span></span></li>
+          <li><span class="step-number">2</span> <span><strong data-i18n="method.step2title">Consulta:</strong> <span data-i18n="method.step2">O sistema consulta bases de fact-checking e arquivos públicos.</span></span></li>
+          <li><span class="step-number">3</span> <span><strong data-i18n="method.step3title">Análise de padrões:</strong> <span data-i18n="method.step3">Algoritmos procuram assinaturas de IA.</span></span></li>
+          <li><span class="step-number">4</span> <span><strong data-i18n="method.step4title">Resultado:</strong> <span data-i18n="method.step4">Classificação clara com fontes citadas.</span></span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2 data-i18n="trust.title">Confiança transparente</h2>
+        <p data-i18n="trust.desc">Cada verificação é acompanhada das referências utilizadas. Nenhuma decisão é uma caixa preta.</p>
+        <p style="margin-top: 1.5rem; color: var(--text-tertiary);" data-i18n="trust.ephemeral">
+          Nenhum arquivo enviado é armazenado. A análise é efêmera e segura.
+        </p>
       </div>
     </section>
 
-    <div class="fade-section">
-      <h2 data-i18n="flow.title">Do envio à percepção</h2>
-      <div class="flow-row">
-        <div class="flow-item"><strong data-i18n="flow.step1">Enviar</strong><br><span data-i18n="flow.step1sub">texto / imagem / vídeo</span></div>
-        <div class="flow-item"><strong data-i18n="flow.step2">Processar</strong><br><span data-i18n="flow.step2sub">verificação forense + fontes</span></div>
-        <div class="flow-item"><strong data-i18n="flow.step3">Analisar</strong><br><span data-i18n="flow.step3sub">impressão digital IA</span></div>
-        <div class="flow-item"><strong data-i18n="flow.step4">Relatório</strong><br><span data-i18n="flow.step4sub">pontuação de autenticidade</span></div>
+    <div class="fade-section validation-banner">
+      <div>
+        <h3 style="margin-bottom: 0.3rem;" data-i18n="validation.title">Acesso completo</h3>
+        <p style="color: var(--text-secondary);" data-i18n="validation.desc">Entre para usar o chatbot e obter relatórios detalhados.</p>
       </div>
-    </div>
-
-    <section class="fade-section" id="transparency">
-      <div class="glass-panel">
-        <div class="section-tag" data-i18n="transp.tag">metodologia aberta</div>
-        <h2 data-i18n="transp.title">Transparente por concepção</h2>
-        <p data-i18n="transp.desc">Élen referencia bases de conhecimento públicas, incluindo organizações de checagem, artigos acadêmicos e veículos verificados.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 1.5rem;">
-          <div><i class="fas fa-arrow-right"></i> Reuters Fact Check</div>
-          <div><i class="fas fa-arrow-right"></i> AFP Factuel</div>
-          <div><i class="fas fa-arrow-right"></i> Snopes / PolitiFact</div>
-          <div><i class="fas fa-arrow-right"></i> Google Fact Check Tools</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="fade-section validation-highlight">
-      <div><h3 data-i18n="validation.title">Acesso completo · Validação</h3><p data-i18n="validation.desc">Faça login para usar o chatbot e obter relatórios detalhados.</p></div>
-      <a href="login.html"><i class="fas fa-arrow-right"></i> <span data-i18n="validation.button">Ir para Validação</span></a>
+      <a href="login.html" class="btn">
+        <span data-i18n="validation.button">Acessar Validação</span> <i class="fas fa-arrow-right"></i>
+      </a>
     </div>
 
     <div class="fade-section">
-      <h2 data-i18n="faq.title">Perguntas frequentes</h2>
+      <h2 data-i18n="faq.title">Perguntas Frequentes (FAQs)</h2>
       <div class="faq-grid">
-        <div class="faq-item"><h4 data-i18n="faq.q1">Que tipos de IA o Élen pode detectar?</h4><p data-i18n="faq.a1">Texto de LLMs (GPT, Claude etc.), imagens do Midjourney/DALL·E e vídeos deepfake.</p></div>
-        <div class="faq-item"><h4 data-i18n="faq.q2">É gratuito?</h4><p data-i18n="faq.a2">Verificações básicas são gratuitas; análise avançada e API exigem uma conta.</p></div>
-        <div class="faq-item"><h4 data-i18n="faq.q3">Quão rápidos são os resultados?</h4><p data-i18n="faq.a3">A maioria das análises leva de 10 a 30 segundos.</p></div>
-        <div class="faq-item"><h4 data-i18n="faq.q4">Pode analisar conteúdo em outros idiomas?</h4><p data-i18n="faq.a4">Sim, o Élen suporta vários idiomas graças a modelos multilíngues.</p></div>
+        <div class="faq-item">
+          <h4 data-i18n="faq.q1">O que o Élen detecta?</h4>
+          <p data-i18n="faq.a1">Textos gerados por LLMs, imagens de difusão e vídeos deepfake.</p>
+        </div>
+        <div class="faq-item">
+          <h4 data-i18n="faq.q2">É gratuito?</h4>
+          <p data-i18n="faq.a2">Verificações básicas são gratuitas; recursos avançados exigem conta.</p>
+        </div>
+        <div class="faq-item">
+          <h4 data-i18n="faq.q3">Quanto tempo leva?</h4>
+          <p data-i18n="faq.a3">A maioria das análises é concluída em menos de 30 segundos.</p>
+        </div>
+        <div class="faq-item">
+          <h4 data-i18n="faq.q4">Suporta outros idiomas?</h4>
+          <p data-i18n="faq.a4">Sim, o sistema é multilíngue.</p>
+        </div>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
-          <div class="logo-mark" style="width: 36px; height: 36px;"></div>
-          <span style="font-weight: 600; font-size: 1.3rem;">Élen</span>
-        </div>
-        <p style="color: var(--text-tertiary);"><span data-i18n="footer.tagline">Clareza em um mundo sintético.</span><br>© <span id="currentYear"></span> Élen Project</p>
+    <div class="footer-content">
+      <div style="font-weight: 500;">&copy; <span id="currentYear"></span> Élen</div>
+      <div class="footer-links">
+        <a href="#" data-i18n="footer.about">Sobre</a>
+        <a href="#" data-i18n="footer.privacy">Privacidade</a>
+        <a href="#" data-i18n="footer.contact">Contato</a>
       </div>
-      <div class="footer-links-group">
-        <div class="footer-column"><h4 data-i18n="footer.product">Produto</h4><a href="#" data-i18n="footer.how">Como funciona</a><a href="#" data-i18n="footer.validation">Validação</a><a href="#" data-i18n="footer.api">API (em breve)</a></div>
-        <div class="footer-column"><h4 data-i18n="footer.resources">Recursos</h4><a href="#" data-i18n="footer.docs">Documentação</a><a href="#" data-i18n="footer.report">Relatório de transparência</a><a href="#" data-i18n="footer.research">Pesquisa</a></div>
-        <div class="footer-column"><h4 data-i18n="footer.company">Empresa</h4><a href="#" data-i18n="footer.about">Sobre</a><a href="#" data-i18n="footer.privacy">Privacidade</a><a href="#" data-i18n="footer.contact">Contato</a></div>
-      </div>
-    </div>
-    <div class="copyright">
-      <span data-i18n="footer.nostorage">Análise baseada em fontes públicas. Nenhum conteúdo do usuário é armazenado.</span>
       <div class="lang-selector">
-        <i class="fas fa-globe"></i>
+        <i class="fas fa-globe" style="margin-right: 6px;"></i>
         <select id="languageSelect">
           <option value="pt">Português</option>
           <option value="en">English</option>
@@ -148,8 +142,8 @@
 
   <script>
     (function() {
-      const SUPABASE_URL = 'https://tzghtodhsyrevmmlndim.supabase.co';
-      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6Z2h0b2Roc3lyZXZtbWxuZGltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTM3NDIsImV4cCI6MjA5MjI4OTc0Mn0.G0OH0EyZpq8_O4uHiVKmQTVfHsQ5ZxHykahA1HUfYVE';
+      const SUPABASE_URL = 'https://nhrppqkwxydwqdvaawmo.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ocnBwcWt3eHlkd3FkdmFhd21vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MDkxNDEsImV4cCI6MjA5MjI4NTE0MX0.G5xZ8otxSWM8tWUlxReQ40NM4AVRgk01JfylDWQ7I5E';
 
       const body = document.body;
       const themeToggle = document.getElementById('themeToggle');
@@ -169,171 +163,129 @@
       const fadeElements = document.querySelectorAll('.fade-section');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.1 });
       fadeElements.forEach(el => observer.observe(el));
 
       const translations = {
         pt: {
-          'nav.home':'Início','nav.how':'Como','nav.transparency':'Transparência','nav.validation':'Validação',
-          'hero.tag':'Camada de autenticidade IA','hero.title':'Élen distingue fato de ficção',
-          'hero.lead':'Para histórias, imagens e vídeos — detecte geração por IA com fontes verificadas.',
-          'hero.desc':'Élen é um assistente de verificação que usa referências globais confiáveis para determinar se o conteúdo é humano ou sintético.',
-          'hero.stat1':'140+ fontes de checagem','hero.stat2':'Análise em tempo real','hero.stat3':'Pontuação transparente',
-          'hero.servers':'servidores','hero.users':'usuários',
-          'card1.title':'Texto e narrativas','card1.desc':'Analisa creepypastas, artigos e postagens. Compara estilo, estrutura e consistência factual com arquivos e jornalismo.',
-          'card2.title':'Inspeção de imagens','card2.desc':'Detecta artefatos generativos, verifica EXIF e realiza busca reversa para verificar o contexto original.',
-          'card3.title':'Análise de vídeo','card3.desc':'Identifica deepfakes, anomalias temporais e incompatibilidades audiovisuais usando algoritmos forenses.',
-          'method.tag':'metodologia','method.title':'Como a verificação funciona',
-          'method.step1title':'Ingestão:','method.step1':'Envie ou cole um link. O sistema extrai texto, características visuais ou quadros-chave.',
-          'method.step2title':'Referência cruzada:','method.step2':'Consulta bancos de dados confiáveis, APIs de checagem e corpora abertos.',
-          'method.step3title':'Impressão digital de IA:','method.step3':'Varre sinais reveladores de geradores como GANs, modelos de difusão ou LLMs.',
-          'method.step4title':'Veredito:','method.step4':'Fornece uma classificação clara: autêntico ou sintético com links de evidências.',
-          'trust.tag':'confiabilidade','trust.title':'Por que confiar no Élen?',
-          'trust.desc':'Cada resultado é respaldado por fontes públicas verificáveis — sem IA caixa-preta.',
-          'trust.precision':'precisão (testada)','trust.retention':'retenção de dados','trust.ephemeral':'Élen não armazena seus envios. A análise é efêmera e segura.',
-          'flow.title':'Do envio à percepção','flow.step1':'Enviar','flow.step1sub':'texto / imagem / vídeo',
-          'flow.step2':'Processar','flow.step2sub':'verificação forense + fontes','flow.step3':'Analisar','flow.step3sub':'impressão digital IA',
-          'flow.step4':'Relatório','flow.step4sub':'pontuação de autenticidade',
-          'transp.tag':'metodologia aberta','transp.title':'Transparente por concepção',
-          'transp.desc':'Élen referencia bases de conhecimento públicas, incluindo organizações de checagem, artigos acadêmicos e veículos verificados.',
-          'validation.title':'Acesso completo · Validação','validation.desc':'Faça login para usar o chatbot e obter relatórios detalhados.',
-          'validation.button':'Ir para Validação',
-          'faq.title':'Perguntas frequentes','faq.q1':'Que tipos de IA o Élen pode detectar?','faq.a1':'Texto de LLMs, imagens do Midjourney/DALL·E e vídeos deepfake.',
-          'faq.q2':'É gratuito?','faq.a2':'Verificações básicas são gratuitas; análise avançada e API exigem uma conta.',
-          'faq.q3':'Quão rápidos são os resultados?','faq.a3':'A maioria das análises leva de 10 a 30 segundos.',
-          'faq.q4':'Pode analisar conteúdo em outros idiomas?','faq.a4':'Sim, o Élen suporta vários idiomas.',
-          'footer.tagline':'Clareza em um mundo sintético.','footer.product':'Produto','footer.how':'Como funciona',
-          'footer.validation':'Validação','footer.api':'API (em breve)','footer.resources':'Recursos','footer.docs':'Documentação',
-          'footer.report':'Relatório de transparência','footer.research':'Pesquisa','footer.company':'Empresa','footer.about':'Sobre',
-          'footer.privacy':'Privacidade','footer.contact':'Contato','footer.nostorage':'Análise baseada em fontes públicas. Nenhum conteúdo do usuário é armazenado.'
+          'nav.home':'Início','nav.how':'Como funciona','nav.transparency':'Transparência','nav.validation':'Validação',
+          'hero.tag':'Camada de autenticidade','hero.title':'Élen revela o que é real',
+          'hero.lead':'Detecte se uma história, imagem ou vídeo foi gerado por inteligência artificial — com fontes verificadas.',
+          'hero.servers':'servidores ativos','hero.users':'usuários','hero.accuracy':'precisão',
+          'card1.title':'Texto','card1.desc':'Analisa narrativas, artigos e publicações comparando com arquivos jornalísticos.',
+          'card2.title':'Imagem','card2.desc':'Detecta marcas de IA, verifica metadados e busca o contexto original.',
+          'card3.title':'Vídeo','card3.desc':'Identifica deepfakes e inconsistências com algoritmos forenses.',
+          'method.title':'Verificação passo a passo',
+          'method.step1title':'Envio:','method.step1':'Cole um link ou faça upload do arquivo.',
+          'method.step2title':'Consulta:','method.step2':'O sistema consulta bases de fact-checking e arquivos públicos.',
+          'method.step3title':'Análise de padrões:','method.step3':'Algoritmos procuram assinaturas de IA.',
+          'method.step4title':'Resultado:','method.step4':'Classificação clara com fontes citadas.',
+          'trust.title':'Confiança transparente','trust.desc':'Cada verificação é acompanhada das referências utilizadas. Nenhuma decisão é uma caixa preta.',
+          'trust.ephemeral':'Nenhum arquivo enviado é armazenado. A análise é efêmera e segura.',
+          'validation.title':'Acesso completo','validation.desc':'Entre para usar o chatbot e obter relatórios detalhados.',
+          'validation.button':'Acessar Validação',
+          'faq.title':'Perguntas frequentes (FAQs)',
+          'faq.q1':'O que o Élen detecta?','faq.a1':'Textos gerados por LLMs, imagens de difusão e vídeos deepfake.',
+          'faq.q2':'É gratuito?','faq.a2':'Verificações básicas são gratuitas; recursos avançados exigem conta.',
+          'faq.q3':'Quanto tempo leva?','faq.a3':'A maioria das análises é concluída em menos de 30 segundos.',
+          'faq.q4':'Suporta outros idiomas?','faq.a4':'Sim, o sistema é multilíngue.',
+          'footer.about':'Sobre','footer.privacy':'Privacidade','footer.contact':'Contato'
         },
         en: {
           'nav.home':'Home','nav.how':'How','nav.transparency':'Transparency','nav.validation':'Validation',
-          'hero.tag':'AI authenticity layer','hero.title':'Élen tells fact from fiction',
-          'hero.lead':'For stories, images, and video — detect AI generation with cross‑verified sources.',
-          'hero.desc':'Élen is a verification assistant that uses trusted global references to determine whether content is human‑created or synthetic.',
-          'hero.stat1':'140+ fact-checking sources','hero.stat2':'Real‑time analysis','hero.stat3':'Transparent scoring',
-          'hero.servers':'servers','hero.users':'users',
-          'card1.title':'Text & narratives','card1.desc':'Analyzes creepypastas, articles, and social posts. Compares writing style, structure, and factual consistency against archives and journalism.',
-          'card2.title':'Image inspection','card2.desc':'Detects generative artifacts, checks EXIF, and performs reverse search to verify original context.',
-          'card3.title':'Video forensics','card3.desc':'Identifies deepfakes, temporal anomalies, and audio‑visual mismatches using forensic algorithms.',
-          'method.tag':'methodology','method.title':'How verification works',
-          'method.step1title':'Ingestion:','method.step1':'Upload or paste a link. The system extracts text, visual features, or keyframes.',
-          'method.step2title':'Cross‑reference:','method.step2':'Queries trusted databases, fact‑check APIs, and open corpora.',
-          'method.step3title':'AI fingerprinting:','method.step3':'Scans for telltale signs of generators like GANs, diffusion models, or LLM patterns.',
-          'method.step4title':'Verdict:','method.step4':'Delivers a clear classification: authentic or synthetic with evidence links.',
-          'trust.tag':'reliability','trust.title':'Why trust Élen?',
-          'trust.desc':'Every result is backed by public, verifiable sources — no black‑box AI.',
-          'trust.precision':'precision (tested)','trust.retention':'data retention','trust.ephemeral':'Élen does not store your uploads. Analysis is ephemeral and secure.',
-          'flow.title':'From upload to insight','flow.step1':'Submit','flow.step1sub':'text / image / video',
-          'flow.step2':'Process','flow.step2sub':'forensic + source check','flow.step3':'Analyze','flow.step3sub':'AI fingerprint',
-          'flow.step4':'Report','flow.step4sub':'authenticity score',
-          'transp.tag':'open methodology','transp.title':'Transparent by design',
-          'transp.desc':'Élen references public knowledge bases, including fact‑checking organizations, academic papers, and verified news outlets.',
-          'validation.title':'Full access · Validation','validation.desc':'Sign in to use the chatbot and get detailed reports.',
+          'hero.tag':'Authenticity layer','hero.title':'Élen reveals what is real',
+          'hero.lead':'Detect whether a story, image, or video was generated by AI — with verified sources.',
+          'hero.servers':'active servers','hero.users':'users','hero.accuracy':'accuracy',
+          'card1.title':'Text','card1.desc':'Analyzes narratives, articles, and posts against journalistic archives.',
+          'card2.title':'Image','card2.desc':'Detects AI artifacts, checks metadata, and finds original context.',
+          'card3.title':'Video','card3.desc':'Identifies deepfakes and inconsistencies with forensic algorithms.',
+          'method.title':'Step-by-step verification',
+          'method.step1title':'Submit:','method.step1':'Paste a link or upload a file.',
+          'method.step2title':'Query:','method.step2':'The system checks fact-checking databases and public archives.',
+          'method.step3title':'Pattern analysis:','method.step3':'Algorithms search for AI signatures.',
+          'method.step4title':'Result:','method.step4':'Clear classification with cited sources.',
+          'trust.title':'Transparent trust','trust.desc':'Each verification includes the references used. No black-box decisions.',
+          'trust.ephemeral':'No uploaded files are stored. Analysis is ephemeral and secure.',
+          'validation.title':'Full access','validation.desc':'Sign in to use the chatbot and get detailed reports.',
           'validation.button':'Go to Validation',
-          'faq.title':'Common questions','faq.q1':'What types of AI can Élen detect?','faq.a1':'Text from LLMs, images from Midjourney/DALL·E, and deepfake videos.',
-          'faq.q2':'Is it free to use?','faq.a2':'Basic checks are free; advanced analysis and API access require an account.',
-          'faq.q3':'How fast are results?','faq.a3':'Most analyses complete within 10–30 seconds.',
-          'faq.q4':'Can it analyze non‑English content?','faq.a4':'Yes, Élen supports multiple languages.',
-          'footer.tagline':'Clarity in a synthetic world.','footer.product':'Product','footer.how':'How it works',
-          'footer.validation':'Validation','footer.api':'API (soon)','footer.resources':'Resources','footer.docs':'Documentation',
-          'footer.report':'Transparency report','footer.research':'Research','footer.company':'Company','footer.about':'About',
-          'footer.privacy':'Privacy','footer.contact':'Contact','footer.nostorage':'All analysis based on public sources. No user content is stored.'
+          'faq.title':'Frequently asked (FAQs)',
+          'faq.q1':'What does Élen detect?','faq.a1':'LLM-generated text, diffusion images, and deepfake videos.',
+          'faq.q2':'Is it free?','faq.a2':'Basic checks are free; advanced features require an account.',
+          'faq.q3':'How fast?','faq.a3':'Most analyses finish within 30 seconds.',
+          'faq.q4':'Other languages?','faq.a4':'Yes, the system is multilingual.',
+          'footer.about':'About','footer.privacy':'Privacy','footer.contact':'Contact'
         },
         fr: {
           'nav.home':'Accueil','nav.how':'Fonctionnement','nav.transparency':'Transparence','nav.validation':'Validation',
-          'hero.tag':'Couche d’authenticité IA','hero.title':'Élen distingue le vrai du faux',
-          'hero.lead':'Pour les histoires, images et vidéos — détectez la génération IA avec des sources vérifiées.',
-          'hero.desc':'Élen est un assistant de vérification qui utilise des références mondiales fiables.',
-          'hero.stat1':'140+ sources','hero.stat2':'Analyse temps réel','hero.stat3':'Notation transparente',
-          'hero.servers':'serveurs','hero.users':'utilisateurs',
-          'card1.title':'Texte et récits','card1.desc':'Analyse les creepypastas, articles et publications.',
-          'card2.title':'Inspection d’images','card2.desc':'Détecte les artefacts génératifs, vérifie les EXIF.',
-          'card3.title':'Analyse vidéo','card3.desc':'Identifie les deepfakes et anomalies.',
-          'method.tag':'méthodologie','method.title':'Comment fonctionne la vérification',
-          'method.step1title':'Ingestion :','method.step1':'Téléversez ou collez un lien.',
-          'method.step2title':'Référencement croisé :','method.step2':'Interroge bases de données et API.',
-          'method.step3title':'Empreinte IA :','method.step3':'Recherche signes de générateurs.',
-          'method.step4title':'Verdict :','method.step4':'Classification claire : authentique ou synthétique.',
-          'trust.tag':'fiabilité','trust.title':'Pourquoi faire confiance ?','trust.desc':'Sources publiques vérifiables.',
-          'trust.precision':'précision','trust.retention':'rétention','trust.ephemeral':'Analyse éphémère.',
-          'flow.title':'Du dépôt à l’information','flow.step1':'Soumettre','flow.step1sub':'texte / image / vidéo',
-          'flow.step2':'Traiter','flow.step2sub':'vérification + sources','flow.step3':'Analyser','flow.step3sub':'empreinte IA',
-          'flow.step4':'Rapport','flow.step4sub':'score d’authenticité',
-          'transp.tag':'méthodologie ouverte','transp.title':'Transparent par conception',
-          'transp.desc':'Référence des bases publiques.',
-          'validation.title':'Accès complet','validation.desc':'Connectez-vous pour utiliser le chatbot.',
+          'hero.tag':'Couche d\'authenticité','hero.title':'Élen révèle le vrai',
+          'hero.lead':'Détectez si une histoire, image ou vidéo a été générée par IA — avec sources vérifiées.',
+          'hero.servers':'serveurs actifs','hero.users':'utilisateurs','hero.accuracy':'précision',
+          'card1.title':'Texte','card1.desc':'Analyse récits, articles et publications.',
+          'card2.title':'Image','card2.desc':'Détecte artefacts IA, vérifie métadonnées.',
+          'card3.title':'Vidéo','card3.desc':'Identifie deepfakes et incohérences.',
+          'method.title':'Vérification pas à pas',
+          'method.step1title':'Envoi :','method.step1':'Collez un lien ou téléversez.',
+          'method.step2title':'Consultation :','method.step2':'Interroge bases de fact-checking.',
+          'method.step3title':'Analyse :','method.step3':'Recherche signatures IA.',
+          'method.step4title':'Résultat :','method.step4':'Classification avec sources.',
+          'trust.title':'Confiance transparente','trust.desc':'Chaque vérification inclut les références.',
+          'trust.ephemeral':'Aucun fichier stocké. Analyse éphémère.',
+          'validation.title':'Accès complet','validation.desc':'Connectez-vous pour le chatbot.',
           'validation.button':'Accéder',
-          'faq.title':'Questions fréquentes','faq.q1':'Quels types ?','faq.a1':'Texte LLM, images, deepfake.',
-          'faq.q2':'Gratuit ?','faq.a2':'Basique gratuit, avancé payant.','faq.q3':'Rapidité ?','faq.a3':'10–30 secondes.',
-          'faq.q4':'Contenu non anglophone ?','faq.a4':'Oui, multilingue.',
-          'footer.tagline':'Clarté dans un monde synthétique.','footer.product':'Produit','footer.how':'Fonctionnement',
-          'footer.validation':'Validation','footer.api':'API','footer.resources':'Ressources','footer.docs':'Documentation',
-          'footer.report':'Rapport','footer.research':'Recherche','footer.company':'Société','footer.about':'À propos',
-          'footer.privacy':'Confidentialité','footer.contact':'Contact','footer.nostorage':'Aucun contenu stocké.'
+          'faq.title':'Questions fréquentes',
+          'faq.q1':'Que détecte Élen ?','faq.a1':'Texte LLM, images de diffusion, deepfakes.',
+          'faq.q2':'Gratuit ?','faq.a2':'Vérifications de base gratuites.',
+          'faq.q3':'Rapidité ?','faq.a3':'Moins de 30 secondes.',
+          'faq.q4':'Autres langues ?','faq.a4':'Oui, multilingue.',
+          'footer.about':'À propos','footer.privacy':'Confidentialité','footer.contact':'Contact'
         },
         it: {
           'nav.home':'Home','nav.how':'Come funziona','nav.transparency':'Trasparenza','nav.validation':'Validazione',
-          'hero.tag':'Livello autenticità IA','hero.title':'Élen distingue il vero dal falso',
-          'hero.lead':'Per storie, immagini e video — rileva generazione IA con fonti verificate.',
-          'hero.desc':'Élen è un assistente di verifica che usa riferimenti globali affidabili.',
-          'hero.stat1':'140+ fonti','hero.stat2':'Analisi in tempo reale','hero.stat3':'Punteggio trasparente',
-          'hero.servers':'server','hero.users':'utenti',
-          'card1.title':'Testo','card1.desc':'Analizza creepypasta, articoli.',
-          'card2.title':'Immagini','card2.desc':'Rileva artefatti, controlla EXIF.',
+          'hero.tag':'Livello di autenticità','hero.title':'Élen svela ciò che è reale',
+          'hero.lead':'Rileva se una storia, immagine o video è stato generato da IA — con fonti verificate.',
+          'hero.servers':'server attivi','hero.users':'utenti','hero.accuracy':'precisione',
+          'card1.title':'Testo','card1.desc':'Analizza racconti, articoli e post.',
+          'card2.title':'Immagine','card2.desc':'Rileva artefatti IA, controlla metadati.',
           'card3.title':'Video','card3.desc':'Identifica deepfake e anomalie.',
-          'method.tag':'metodologia','method.title':'Come funziona',
-          'method.step1title':'Acquisizione:','method.step1':'Carica o incolla link.',
-          'method.step2title':'Riferimenti:','method.step2':'Interroga database.',
-          'method.step3title':'Impronta IA:','method.step3':'Cerca segni di generatori.',
-          'method.step4title':'Verdetto:','method.step4':'Autentico o sintetico.',
-          'trust.tag':'affidabilità','trust.title':'Perché fidarsi?','trust.desc':'Fonti pubbliche verificabili.',
-          'trust.precision':'precisione','trust.retention':'conservazione','trust.ephemeral':'Analisi effimera.',
-          'flow.title':'Dal caricamento','flow.step1':'Invia','flow.step1sub':'testo / immagine / video',
-          'flow.step2':'Elabora','flow.step2sub':'controllo + fonti','flow.step3':'Analizza','flow.step3sub':'impronta IA',
-          'flow.step4':'Report','flow.step4sub':'punteggio',
-          'transp.tag':'metodologia aperta','transp.title':'Trasparente','transp.desc':'Riferimenti pubblici.',
-          'validation.title':'Accesso completo','validation.desc':'Accedi per chatbot.',
+          'method.title':'Verifica passo passo',
+          'method.step1title':'Invio:','method.step1':'Incolla link o carica file.',
+          'method.step2title':'Consultazione:','method.step2':'Interroga database di fact-checking.',
+          'method.step3title':'Analisi:','method.step3':'Cerca firme IA.',
+          'method.step4title':'Risultato:','method.step4':'Classificazione con fonti.',
+          'trust.title':'Fiducia trasparente','trust.desc':'Ogni verifica include i riferimenti.',
+          'trust.ephemeral':'Nessun file archiviato.',
+          'validation.title':'Accesso completo','validation.desc':'Accedi per il chatbot.',
           'validation.button':'Vai',
-          'faq.title':'Domande frequenti','faq.q1':'Quali tipi?','faq.a1':'Testo LLM, immagini, deepfake.',
-          'faq.q2':'Gratuito?','faq.a2':'Base gratis.','faq.q3':'Velocità?','faq.a3':'10–30 secondi.',
-          'faq.q4':'Contenuti non inglesi?','faq.a4':'Sì, multilingue.',
-          'footer.tagline':'Chiarezza in un mondo sintetico.','footer.product':'Prodotto','footer.how':'Come funziona',
-          'footer.validation':'Validazione','footer.api':'API','footer.resources':'Risorse','footer.docs':'Documentazione',
-          'footer.report':'Report','footer.research':'Ricerca','footer.company':'Azienda','footer.about':'Chi siamo',
-          'footer.privacy':'Privacy','footer.contact':'Contatti','footer.nostorage':'Nessun contenuto memorizzato.'
+          'faq.title':'Domande frequenti',
+          'faq.q1':'Cosa rileva Élen?','faq.a1':'Testo LLM, immagini, deepfake.',
+          'faq.q2':'Gratuito?','faq.a2':'Base gratuita.',
+          'faq.q3':'Velocità?','faq.a3':'Meno di 30 secondi.',
+          'faq.q4':'Altre lingue?','faq.a4':'Sì, multilingue.',
+          'footer.about':'Chi siamo','footer.privacy':'Privacy','footer.contact':'Contatti'
         },
         es: {
-          'nav.home':'Inicio','nav.how':'Cómo','nav.transparency':'Transparencia','nav.validation':'Validación',
-          'hero.tag':'Capa de autenticidad IA','hero.title':'Élen distingue lo real de lo falso',
-          'hero.lead':'Para historias, imágenes y videos — detecta generación por IA con fuentes verificadas.',
-          'hero.desc':'Élen es un asistente de verificación que usa referencias globales confiables.',
-          'hero.stat1':'140+ fuentes','hero.stat2':'Análisis en tiempo real','hero.stat3':'Puntuación transparente',
-          'hero.servers':'servidores','hero.users':'usuarios',
-          'card1.title':'Texto','card1.desc':'Analiza creepypastas, artículos.',
-          'card2.title':'Imágenes','card2.desc':'Detecta artefactos, verifica EXIF.',
-          'card3.title':'Video','card3.desc':'Identifica deepfakes y anomalías.',
-          'method.tag':'metodología','method.title':'Cómo funciona',
-          'method.step1title':'Ingestión:','method.step1':'Sube o pega enlace.',
-          'method.step2title':'Referencia:','method.step2':'Consulta bases de datos.',
-          'method.step3title':'Huella IA:','method.step3':'Busca signos de generadores.',
-          'method.step4title':'Veredicto:','method.step4':'Auténtico o sintético.',
-          'trust.tag':'fiabilidad','trust.title':'¿Por qué confiar?','trust.desc':'Fuentes públicas verificables.',
-          'trust.precision':'precisión','trust.retention':'retención','trust.ephemeral':'Análisis efímero.',
-          'flow.title':'De la carga','flow.step1':'Enviar','flow.step1sub':'texto / imagen / video',
-          'flow.step2':'Procesar','flow.step2sub':'verificación + fuentes','flow.step3':'Analizar','flow.step3sub':'huella IA',
-          'flow.step4':'Informe','flow.step4sub':'puntuación',
-          'transp.tag':'metodología abierta','transp.title':'Transparente','transp.desc':'Referencias públicas.',
-          'validation.title':'Acceso completo','validation.desc':'Inicia sesión para usar el chatbot.',
-          'validation.button':'Ir',
-          'faq.title':'Preguntas frecuentes','faq.q1':'¿Qué tipos?','faq.a1':'Texto LLM, imágenes, deepfake.',
-          'faq.q2':'¿Gratuito?','faq.a2':'Básico gratis.','faq.q3':'¿Velocidad?','faq.a3':'10–30 segundos.',
-          'faq.q4':'¿Contenido no inglés?','faq.a4':'Sí, multilingüe.',
-          'footer.tagline':'Claridad en un mundo sintético.','footer.product':'Producto','footer.how':'Cómo funciona',
-          'footer.validation':'Validación','footer.api':'API','footer.resources':'Recursos','footer.docs':'Documentación',
-          'footer.report':'Informe','footer.research':'Investigación','footer.company':'Empresa','footer.about':'Acerca de',
-          'footer.privacy':'Privacidad','footer.contact':'Contacto','footer.nostorage':'No se almacena contenido.'
+          'nav.home':'Inicio','nav.how':'Cómo funciona','nav.transparency':'Transparencia','nav.validation':'Validación',
+          'hero.tag':'Capa de autenticidad','hero.title':'Élen revela lo que es real',
+          'hero.lead':'Detecta si una historia, imagen o video fue generado por IA — con fuentes verificadas.',
+          'hero.servers':'servidores activos','hero.users':'usuarios','hero.accuracy':'precisión',
+          'card1.title':'Texto','card1.desc':'Analiza relatos, artículos y publicaciones.',
+          'card2.title':'Imagen','card2.desc':'Detecta artefactos IA, verifica metadatos.',
+          'card3.title':'Video','card3.desc':'Identifica deepfakes e inconsistencias.',
+          'method.title':'Verificación paso a paso',
+          'method.step1title':'Envío:','method.step1':'Pega un enlace o sube archivo.',
+          'method.step2title':'Consulta:','method.step2':'Consulta bases de verificación.',
+          'method.step3title':'Análisis:','method.step3':'Busca firmas de IA.',
+          'method.step4title':'Resultado:','method.step4':'Clasificación con fuentes.',
+          'trust.title':'Confianza transparente','trust.desc':'Cada verificación incluye referencias.',
+          'trust.ephemeral':'No se almacenan archivos.',
+          'validation.title':'Acceso completo','validation.desc':'Inicia sesión para el chatbot.',
+          'validation.button':'Acceder',
+          'faq.title':'Preguntas frecuentes (FAQs)',
+          'faq.q1':'¿Qué detecta Élen?','faq.a1':'Texto LLM, imágenes de difusión, deepfakes.',
+          'faq.q2':'¿Gratuito?','faq.a2':'Verificaciones básicas gratuitas.',
+          'faq.q3':'¿Velocidad?','faq.a3':'Menos de 30 segundos.',
+          'faq.q4':'¿Otros idiomas?','faq.a4':'Sí, multilingüe.',
+          'footer.about':'Acerca de','footer.privacy':'Privacidad','footer.contact':'Contacto'
         }
       };
 
@@ -354,7 +306,7 @@
       async function loadSupabaseCounts() {
         const serverSpan = document.getElementById('serverCountDisplay');
         const userSpan = document.getElementById('userCountDisplay');
-        if (!SUPABASE_URL.includes('Élen AI')) {
+        if (!SUPABASE_URL.includes('Élen')) {
           try {
             const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             const { count: sCount } = await supabase.from('servers').select('*', { count: 'exact', head: true });
@@ -362,12 +314,12 @@
             const { count: uCount } = await supabase.from('users').select('*', { count: 'exact', head: true });
             if (uCount !== null) userSpan.textContent = uCount.toLocaleString();
           } catch (e) {
-            serverSpan.textContent = '0';
-            userSpan.textContent = '0';
+            serverSpan.textContent = '—';
+            userSpan.textContent = '—';
           }
         } else {
-          serverSpan.textContent = '0';
-          userSpan.textContent = '0';
+          serverSpan.textContent = '—';
+          userSpan.textContent = '—';
         }
       }
       if (typeof window.supabase !== 'undefined') loadSupabaseCounts();
