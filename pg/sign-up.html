@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Criar Conta - Élen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css3/sign-up.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo-mark"></div>
+    <div class="nav-links">
+      <a href="index.html" data-i18n="nav.home">Início</a>
+      <a href="index.html#how" data-i18n="nav.how">Como funciona</a>
+      <a href="login.html" data-i18n="nav.login">Entrar</a>
+      <a href="signup.html" style="border-bottom-color: var(--accent);" data-i18n="nav.signup">Criar conta</a>
+    </div>
+    <button class="theme-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+  </nav>
+
+  <main class="container">
+    <div class="signup-card">
+      <h1 data-i18n="signup.title">Criar conta</h1>
+      <p class="subtitle" data-i18n="signup.subtitle">Junte-se ao Élen e comece a verificar conteúdos.</p>
+
+      <button class="google-btn" id="googleSignUp">
+        <i class="fab fa-google"></i>
+        <span data-i18n="signup.google">Continuar com Google</span>
+      </button>
+      <div class="divider"><span data-i18n="signup.or">ou</span></div>
+
+      <form id="signupForm" novalidate>
+        <div class="input-group" id="group-fullName">
+          <label for="fullName" data-i18n="signup.fullName">Nome completo</label>
+          <input type="text" id="fullName" placeholder="Seu nome completo" autocomplete="name">
+          <div class="error-text" data-i18n="error.fullName">Informe seu nome completo.</div>
+        </div>
+
+        <div class="input-group" id="group-username">
+          <label for="username" data-i18n="signup.username">Nome de usuário</label>
+          <input type="text" id="username" placeholder="exemplo: elen_user" autocomplete="username">
+          <div class="error-text" data-i18n="error.username">Escolha um nome de usuário (mínimo 3 caracteres).</div>
+        </div>
+
+        <div class="input-group" id="group-birthdate">
+          <label for="birthdate" data-i18n="signup.birthdate">Data de nascimento</label>
+          <input type="date" id="birthdate">
+          <div class="error-text" data-i18n="error.birthdate">Você deve ter pelo menos 13 anos.</div>
+        </div>
+
+        <div class="input-group" id="group-email">
+          <label for="email" data-i18n="signup.email">Endereço de e-mail</label>
+          <input type="email" id="email" placeholder="exemplo@dominio.com" autocomplete="email">
+          <div class="error-text" data-i18n="error.email">Informe um e-mail válido.</div>
+        </div>
+
+        <div class="input-group" id="group-password">
+          <label for="password" data-i18n="signup.password">Senha</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+            <button type="button" class="toggle-password" data-target="password"><i class="far fa-eye"></i></button>
+          </div>
+          <div class="password-strength">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-text" id="strengthText" data-i18n="signup.strength.weak">Fraca</span>
+          </div>
+          <div class="error-text" data-i18n="error.password">A senha deve ter pelo menos 8 caracteres e incluir letras e números.</div>
+        </div>
+
+        <div class="input-group" id="group-confirm">
+          <label for="confirmPassword" data-i18n="signup.confirm">Confirmar senha</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPassword" placeholder="Repita a senha" autocomplete="new-password">
+            <button type="button" class="toggle-password" data-target="confirmPassword"><i class="far fa-eye"></i></button>
+          </div>
+          <div class="error-text" data-i18n="error.confirm">As senhas não coincidem.</div>
+        </div>
+
+        <div class="checkbox-group" id="group-terms">
+          <input type="checkbox" id="termsCheck">
+          <label for="termsCheck">
+            <span data-i18n="signup.terms">Li e concordo com os</span> 
+            <a href="#" target="_blank" data-i18n="signup.termsLink">Termos de Uso</a> 
+            <span data-i18n="signup.and">e a</span> 
+            <a href="#" target="_blank" data-i18n="signup.privacyLink">Política de Privacidade</a>.
+          </label>
+          <div class="error-text" data-i18n="error.terms">Você deve aceitar os termos para continuar.</div>
+        </div>
+
+        <div class="recaptcha-container">
+          <div class="g-recaptcha" data-sitekey="SUA_SITE_KEY_DO_RECAPTCHA"></div>
+        </div>
+        <div class="input-group error" id="group-recaptcha" style="display: none;">
+          <div class="error-text" data-i18n="error.recaptcha">Confirme que você não é um robô.</div>
+        </div>
+
+        <div id="formMessage" class="message"></div>
+
+        <button type="submit" class="btn-signup" id="submitBtn">
+          <i class="fas fa-user-plus"></i> <span data-i18n="signup.button">Criar conta</span>
+        </button>
+      </form>
+
+      <div class="footer-links">
+        <span data-i18n="signup.hasAccount">Já tem uma conta?</span> <a href="login.html" data-i18n="signup.loginLink">Entrar</a>
+      </div>
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="signup.back">Voltar para o início</span></a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div>© <span id="currentYear"></span> Élen</div>
+      <div class="footer-links-group">
+        <a href="#" data-i18n="footer.about">Sobre</a>
+        <a href="#" data-i18n="footer.privacy">Privacidade</a>
+        <a href="#" data-i18n="footer.contact">Contato</a>
+      </div>
+      <div class="lang-selector">
+        <i class="fas fa-globe"></i>
+        <select id="languageSelect">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="it">Italiano</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const SUPABASE_URL = 'https://SEU_PROJETO.supabase.co';
+      const SUPABASE_ANON_KEY = 'SUA_CHAVE_ANON_AQUI';
+      const RECAPTCHA_SITE_KEY = 'SUA_SITE_KEY_DO_RECAPTCHA';
+      
+      let supabase;
+      try { if (!SUPABASE_URL.includes('SEU_PROJETO')) supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) {}
+
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = themeToggle.querySelector('i');
+      const savedTheme = localStorage.getItem('elen-theme');
+      if (savedTheme === 'dark') { body.classList.add('dark'); themeIcon.className = 'fas fa-sun'; }
+      else { themeIcon.className = 'fas fa-moon'; }
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('elen-theme', isDark ? 'dark' : 'light');
+      });
+
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      const translations = {
+        pt: {
+          'nav.home':'Início','nav.how':'Como funciona','nav.login':'Entrar','nav.signup':'Criar conta',
+          'signup.title':'Criar conta','signup.subtitle':'Junte-se ao Élen.',
+          'signup.google':'Continuar com Google','signup.or':'ou',
+          'signup.fullName':'Nome completo','signup.username':'Nome de usuário','signup.birthdate':'Data de nascimento',
+          'signup.email':'Endereço de e-mail','signup.password':'Senha','signup.confirm':'Confirmar senha',
+          'signup.terms':'Li e concordo com os','signup.termsLink':'Termos de Uso','signup.and':'e a','signup.privacyLink':'Política de Privacidade',
+          'signup.button':'Criar conta','signup.hasAccount':'Já tem uma conta?','signup.loginLink':'Entrar','signup.back':'Voltar',
+          'signup.strength.weak':'Fraca','signup.strength.fair':'Média','signup.strength.good':'Boa','signup.strength.strong':'Forte',
+          'error.fullName':'Informe seu nome completo.','error.username':'Mínimo 3 caracteres.',
+          'error.birthdate':'Idade mínima: 13 anos.','error.email':'E-mail inválido.',
+          'error.password':'Senha muito fraca.','error.confirm':'Senhas não coincidem.',
+          'error.terms':'Aceite os termos.','error.recaptcha':'Confirme que você não é um robô.',
+          'message.checkEmail':'Enviamos um link de confirmação para seu e-mail.',
+          'message.error.generic':'Erro ao criar conta.',
+          'footer.about':'Sobre','footer.privacy':'Privacidade','footer.contact':'Contato'
+        },
+        en: {  }
+      };
+
+      const langSelect = document.getElementById('languageSelect');
+      function applyLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          if (translations[lang]?.[el.dataset.i18n]) el.textContent = translations[lang][el.dataset.i18n];
+        });
+        document.documentElement.lang = lang;
+        localStorage.setItem('elen-lang', lang);
+      }
+      const savedLang = localStorage.getItem('elen-lang') || 'pt';
+      langSelect.value = savedLang;
+      applyLanguage(savedLang);
+      langSelect.addEventListener('change', e => applyLanguage(e.target.value));
+
+      const form = document.getElementById('signupForm');
+      const fields = {
+        fullName: document.getElementById('fullName'),
+        username: document.getElementById('username'),
+        birthdate: document.getElementById('birthdate'),
+        email: document.getElementById('email'),
+        password: document.getElementById('password'),
+        confirm: document.getElementById('confirmPassword'),
+        terms: document.getElementById('termsCheck')
+      };
+      const groups = {
+        fullName: document.getElementById('group-fullName'),
+        username: document.getElementById('group-username'),
+        birthdate: document.getElementById('group-birthdate'),
+        email: document.getElementById('group-email'),
+        password: document.getElementById('group-password'),
+        confirm: document.getElementById('group-confirm'),
+        terms: document.getElementById('group-terms')
+      };
+
+      function showFieldError(fieldId, show) {
+        groups[fieldId].classList.toggle('error', show);
+      }
+
+      function validateFullName() { return fields.fullName.value.trim().length >= 3; }
+      function validateUsername() { return /^[a-zA-Z0-9_]{3,20}$/.test(fields.username.value.trim()); }
+      function validateBirthdate() {
+        if (!fields.birthdate.value) return false;
+        const birth = new Date(fields.birthdate.value);
+        const today = new Date();
+        let age = today.getFullYear() - birth.getFullYear();
+        if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
+        return age >= 13;
+      }
+      function validateEmail() { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.value); }
+      function evaluateStrength(pwd) {
+        let score = 0;
+        if (pwd.length >= 8) score++;
+        if (/[A-Z]/.test(pwd)) score++;
+        if (/[0-9]/.test(pwd)) score++;
+        if (/[^A-Za-z0-9]/.test(pwd)) score++;
+        return Math.min(score, 4);
+      }
+      function validatePassword() { return evaluateStrength(fields.password.value) >= 2; }
+      function validateConfirm() { return fields.password.value === fields.confirm.value; }
+      function validateTerms() { return fields.terms.checked; }
+      function validateRecaptcha() {
+        return typeof grecaptcha !== 'undefined' && grecaptcha.getResponse().length > 0;
+      }
+
+      const strengthFill = document.getElementById('strengthFill');
+      const strengthText = document.getElementById('strengthText');
+      fields.password.addEventListener('input', () => {
+        const score = evaluateStrength(fields.password.value);
+        strengthFill.style.width = (score/4)*100 + '%';
+        const colors = ['var(--error-color)','var(--warning-color)','#2196f3','var(--success-color)'];
+        strengthFill.style.backgroundColor = colors[score] || colors[0];
+        strengthText.textContent = translations[langSelect.value]?.['signup.strength.'+['weak','fair','good','strong'][score]] || '';
+      });
+
+      document.querySelectorAll('.toggle-password').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const input = document.getElementById(btn.dataset.target);
+          const icon = btn.querySelector('i');
+          input.type = input.type === 'password' ? 'text' : 'password';
+          icon.className = input.type === 'password' ? 'far fa-eye' : 'far fa-eye-slash';
+        });
+      });
+
+      document.getElementById('googleSignUp').addEventListener('click', async () => {
+        if (!supabase) return alert('Supabase não configurado.');
+        await supabase.auth.signInWithOAuth({ provider: 'google' });
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        let isValid = true;
+        if (!validateFullName()) { showFieldError('fullName', true); isValid = false; } else showFieldError('fullName', false);
+        if (!validateUsername()) { showFieldError('username', true); isValid = false; } else showFieldError('username', false);
+        if (!validateBirthdate()) { showFieldError('birthdate', true); isValid = false; } else showFieldError('birthdate', false);
+        if (!validateEmail()) { showFieldError('email', true); isValid = false; } else showFieldError('email', false);
+        if (!validatePassword()) { showFieldError('password', true); isValid = false; } else showFieldError('password', false);
+        if (!validateConfirm()) { showFieldError('confirm', true); isValid = false; } else showFieldError('confirm', false);
+        if (!validateTerms()) { showFieldError('terms', true); isValid = false; } else showFieldError('terms', false);
+        if (!validateRecaptcha()) {
+          document.getElementById('group-recaptcha').style.display = 'block';
+          isValid = false;
+        } else {
+          document.getElementById('group-recaptcha').style.display = 'none';
+        }
+
+        if (!isValid) return;
+
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+
+        try {
+          if (!supabase) throw new Error('Supabase não configurado');
+          const { data, error } = await supabase.auth.signUp({
+            email: fields.email.value,
+            password: fields.password.value,
+            options: {
+              data: {
+                full_name: fields.fullName.value,
+                username: fields.username.value,
+                birthdate: fields.birthdate.value
+              },
+              emailRedirectTo: window.location.origin + '/login.html',
+              captchaToken: grecaptcha.getResponse()
+            }
+          });
+          if (error) throw error;
+          document.getElementById('formMessage').className = 'message success';
+          document.getElementById('formMessage').textContent = translations[langSelect.value]?.['message.checkEmail'] || 'Verifique seu e-mail.';
+          form.reset();
+        } catch (err) {
+          document.getElementById('formMessage').className = 'message error';
+          document.getElementById('formMessage').textContent = err.message || 'Erro.';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Criar conta';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
