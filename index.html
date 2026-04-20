@@ -148,8 +148,8 @@
 
   <script>
     (function() {
-      const SUPABASE_URL = 'JA_JA';
-      const SUPABASE_ANON_KEY = 'JA_JA';
+      const SUPABASE_URL = 'https://tzghtodhsyrevmmlndim.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6Z2h0b2Roc3lyZXZtbWxuZGltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTM3NDIsImV4cCI6MjA5MjI4OTc0Mn0.G0OH0EyZpq8_O4uHiVKmQTVfHsQ5ZxHykahA1HUfYVE';
 
       const body = document.body;
       const themeToggle = document.getElementById('themeToggle');
@@ -354,7 +354,7 @@
       async function loadSupabaseCounts() {
         const serverSpan = document.getElementById('serverCountDisplay');
         const userSpan = document.getElementById('userCountDisplay');
-        if (!SUPABASE_URL.includes('SEU_PROJETO')) {
+        if (!SUPABASE_URL.includes('Élen AI')) {
           try {
             const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             const { count: sCount } = await supabase.from('servers').select('*', { count: 'exact', head: true });
@@ -362,12 +362,12 @@
             const { count: uCount } = await supabase.from('users').select('*', { count: 'exact', head: true });
             if (uCount !== null) userSpan.textContent = uCount.toLocaleString();
           } catch (e) {
-            serverSpan.textContent = '2.847';
-            userSpan.textContent = '12.5k';
+            serverSpan.textContent = '0';
+            userSpan.textContent = '0';
           }
         } else {
-          serverSpan.textContent = '2.847';
-          userSpan.textContent = '12.5k';
+          serverSpan.textContent = '0';
+          userSpan.textContent = '0';
         }
       }
       if (typeof window.supabase !== 'undefined') loadSupabaseCounts();
